@@ -1,0 +1,18 @@
+[project]
+name = "PDF-Kacper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "scikit-image",
+    "reportlab",
+    "pypdf",
+    "pymupdf",
+]
+
+[dependency-groups]
+dev = ["ruff"]

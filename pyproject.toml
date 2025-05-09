@@ -12,7 +12,8 @@ dependencies = [
     "reportlab",
     "pypdf",
     "pymupdf",
+    "pillow",
 ]
 
 [dependency-groups]
-dev = ["ruff"]
+dev = ["ipykernel", "ruff", "pyinstaller", "pillow"]

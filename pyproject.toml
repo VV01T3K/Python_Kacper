@@ -13,8 +13,8 @@ dependencies = [
     "pypdf",
     "pymupdf",
     "pillow",
-    "tkinter",
+    "dearpygui",
 ]
 
 [dependency-groups]
-dev = ["ipykernel", "ruff", "pyinstaller", "pillow"]
+dev = ["ipykernel", "ruff", "pyinstaller", "pillow", "nuitka"]

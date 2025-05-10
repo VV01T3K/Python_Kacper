@@ -458,6 +458,7 @@ dependencies = [
     { name = "pillow" },
     { name = "pymupdf" },
     { name = "pypdf" },
+    { name = "pysimplegui" },
     { name = "reportlab" },
     { name = "scikit-image" },
 ]
@@ -477,6 +478,7 @@ requires-dist = [
     { name = "pillow" },
     { name = "pymupdf" },
     { name = "pypdf" },
+    { name = "pysimplegui" },
     { name = "reportlab" },
     { name = "scikit-image" },
 ]
@@ -684,6 +686,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f9/43/4026f6ee056306d0e0eb04fcb9f2122a0f1a5c57ad9dc5e0d67399e47194/pypdf-5.4.0.tar.gz", hash = "sha256:9af476a9dc30fcb137659b0dec747ea94aa954933c52cf02ee33e39a16fe9175", size = 5012492, upload-time = "2025-03-16T09:44:11.656Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/27/d83f8f2a03ca5408dc2cc84b49c0bf3fbf059398a6a2ea7c10acfe28859f/pypdf-5.4.0-py3-none-any.whl", hash = "sha256:db994ab47cadc81057ea1591b90e5b543e2b7ef2d0e31ef41a9bfe763c119dab", size = 302306, upload-time = "2025-03-16T09:44:09.757Z" },
+]
+
+[[package]]
+name = "pysimplegui"
+version = "5.0.8.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b8/ee/c7015ee3d5723aec4335608450a5efb96f53953d65d7acd6227b389e905d/pysimplegui-5.0.8.3.tar.gz", hash = "sha256:4c77436f527b6ee5c6e097a07028c83d85dc2513bcb51b78c9bfcc1b55123bd1", size = 15686, upload-time = "2025-04-02T13:25:19.096Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4d/d9/3de4b7ca71a7779e4f4a160088621b072a29d9b814a7fa9b5411571f4849/pysimplegui-5.0.8.3-py3-none-any.whl", hash = "sha256:67e35ad6dd76e9369051261114f4711308e87815a0488f7fa28b37c29a546f8b", size = 16347, upload-time = "2025-04-02T13:25:17.973Z" },
 ]
 
 [[package]]

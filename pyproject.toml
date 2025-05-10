@@ -5,15 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 
-dependencies = [
-    "numpy",
-    "matplotlib",
-    "scikit-image",
-    "reportlab",
-    "pypdf",
-    "pymupdf",
-    "pillow",
-]
+dependencies = ["reportlab", "pymupdf", "pillow"]
 
 [dependency-groups]
 dev = ["ipykernel", "ruff", "pyinstaller", "pillow"]

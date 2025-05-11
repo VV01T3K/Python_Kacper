@@ -478,7 +478,22 @@ class PDFToolGUI:
         if not self.input_file.get():
             messagebox.showwarning("Warning", "Please select an input PDF file first")
             return
-        self.cleanup()
+        
+        # Close output document and temporary file, but keep the input document
+        if self.output_doc and not getattr(self.output_doc, "is_closed", True):
+            try:
+                self.output_doc.close()
+                self.output_doc = None
+            except Exception as e:
+                self.log(f"Error closing output document: {str(e)}")
+
+        if self.temp_pdf_path and os.path.exists(self.temp_pdf_path):
+            try:
+                os.remove(self.temp_pdf_path)
+                self.temp_pdf_path = None
+            except Exception as e:
+                self.log(f"Error removing temporary file: {str(e)}")
+        
         tool = None
         try:
             tool = PDF_Tool()

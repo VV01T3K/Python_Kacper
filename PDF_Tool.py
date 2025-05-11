@@ -160,13 +160,14 @@ class PDF_Tool:
             .savePDF(output_pdf_path)
         )
 
-    def close(self) -> None:
+    def close(self, keep_output=False) -> None:
         closed_any = False
         if hasattr(self, "original_pdf") and not self.original_pdf.is_closed:
             self.original_pdf.close()
             closed_any = True
-        if hasattr(self, "output_pdf") and not self.output_pdf.is_closed:
-            self.output_pdf.close()
-            closed_any = True
+        if not keep_output:
+            if hasattr(self, "output_pdf") and not self.output_pdf.is_closed:
+                self.output_pdf.close()
+                closed_any = True
         if closed_any:
             print("PDF files closed.")

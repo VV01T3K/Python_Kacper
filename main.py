@@ -1,31 +1,14 @@
-from PDF_Tool import PDF_Tool
+#!/usr/bin/env python
 
-input_pdf_path = "Example\\tests\\test2.pdf"
-output_pdf_path = "Example\\tests\\output.pdf"
+import tkinter as tk
+from pdf_tool_gui import PDFToolGUI
 
-(
-    PDF_Tool()
-    .setNettoFormat(100, 100)
-    .setAdditionalMargin(5)
-    .setBleedSize(3)
-    .setSafeMarginSize(4)
-    .setAnnotationWidth(1)
-    .loadPDF(input_pdf_path)
-    .addPages()
-    .addPagesWithMargin()
-    .addNettoFormatAnnotation()
-    .addBleedSizeAnnotation()
-    .addSafeMarginSizeAnnotation()
-    .addInfoPage()
-    .savePDF(output_pdf_path)
-)
 
-# tool = (
-#     PDF_Tool()
-#     .setNettoFormat(100, 100)
-#     .setAdditionalMargin(5)
-#     .setBleedSize(3)
-#     .setSafeMarginSize(4)
-#     .setAnnotationWidth(1)
-# )
-# tool.fullProcess(input_pdf_path, output_pdf_path).close()
+def main():
+    root = tk.Tk()
+    _ = PDFToolGUI(root)
+    root.mainloop()
+
+
+if __name__ == "__main__":
+    main()

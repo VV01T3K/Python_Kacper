@@ -1,7 +1,7 @@
 from PDF_Tool import PDF_Tool
 
-input_pdf_path = "test2.pdf"
-output_pdf_path = "output.pdf"
+input_pdf_path = "Example\\tests\\test2.pdf"
+output_pdf_path = "Example\\tests\\output.pdf"
 
 (
     PDF_Tool()

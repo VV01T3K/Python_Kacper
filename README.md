@@ -1,5 +1,5 @@
-# Making an exe
+# Add this to your README.md
 
 ```bash
-uv run pyinstaller --onefile --name=pdfTool --icon=pdf.ico "main.py"
+uv run pyinstaller --onefile --add-data "raport.pdf;." --name=pdfTool --icon=pdf.ico "main.py"
 ```

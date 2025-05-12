@@ -1,6 +1,18 @@
+import os
+import sys
 import fitz  # PyMuPDF
 from typing import Tuple
 from enum import Enum
+
+
+def get_resource_path(relative_path):
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 class PDF_Tool:
@@ -53,20 +65,33 @@ class PDF_Tool:
         print("Output PDF initialized.")
         return self
 
-    def addInfoPage(self) -> "PDF_Tool":
-        # Create info page
-        info_page = self.output_pdf.new_page()
-        info_page.insert_text(
-            (50, 50),
-            "This is an information page.",
-            fontsize=12,
-            color=(0, 0, 0),
-        )
-        self.info_page_added = True
+    def addInfoPage(self, info_page_path: str = "raport.pdf") -> "PDF_Tool":
+        # Load the info page PDF
+        info_page_path = get_resource_path(info_page_path)
+        info_pdf = fitz.open(info_page_path)
 
+        # Insert all pages from the info PDF at the beginning
+        for i in range(info_pdf.page_count):
+            info_page = info_pdf[i]
+            # Create a new page with the same dimensions
+            new_page = self.output_pdf.new_page(
+                -1,  # Insert at the end initially
+                width=info_page.rect.width,
+                height=info_page.rect.height,
+            )
+            # Copy content from the info page
+            new_page.show_pdf_page(new_page.rect, info_pdf, i)
+
+        # Move all info pages to the beginning
         page_count = self.output_pdf.page_count
-        if page_count > 1:  # Only need to move if there are other pages
-            self.output_pdf.move_page(page_count - 1, 0)
+        info_page_count = info_pdf.page_count
+
+        # Move each info page to the beginning (in reverse to maintain order)
+        for i in range(info_page_count):
+            self.output_pdf.move_page(page_count - 1 - i, 0)
+
+        info_pdf.close()
+        self.info_page_added = True
 
         return self
 

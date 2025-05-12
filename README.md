@@ -1,5 +1,5 @@
-# Add this to your README.md
+# PyInstaller Build Command
 
 ```bash
-uv run pyinstaller --onefile --add-data "raport.pdf;." --name=pdfTool --icon=pdf.ico "main.py"
+uv run pyinstaller --onefile --noconsole --add-data "raport.pdf;." --name=pdfTool --icon=pdf.ico "main.py"
 ```

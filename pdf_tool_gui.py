@@ -314,14 +314,22 @@ class PDFToolGUI:
                 "Warning", "No processed PDF available. Please process the file first."
             )
             return
+        current_page = self.current_page.get()
         self.showing_output.set(not self.showing_output.get())
+
+        target_doc = self.output_doc if self.showing_output.get() else self.doc
+        max_pages = target_doc.page_count
+
+        new_page = min(current_page, max_pages)
+
         if self.showing_output.get():
             self.view_toggle_button.configure(text="Show Original")
             self.pdf_frame.configure(text="PDF Preview - Processed")
         else:
             self.view_toggle_button.configure(text="Show Processed")
             self.pdf_frame.configure(text="PDF Preview - Original")
-        self.display_page(self.current_page.get() - 1)
+
+        self.display_page(new_page - 1)
 
     def log(self, message: str) -> None:
         self.log_text.config(state=tk.NORMAL)
@@ -478,7 +486,7 @@ class PDFToolGUI:
         if not self.input_file.get():
             messagebox.showwarning("Warning", "Please select an input PDF file first")
             return
-        
+
         # Close output document and temporary file, but keep the input document
         if self.output_doc and not getattr(self.output_doc, "is_closed", True):
             try:
@@ -493,7 +501,7 @@ class PDFToolGUI:
                 self.temp_pdf_path = None
             except Exception as e:
                 self.log(f"Error removing temporary file: {str(e)}")
-        
+
         tool = None
         try:
             tool = PDF_Tool()

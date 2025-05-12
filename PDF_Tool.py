@@ -97,6 +97,7 @@ class PDF_Tool:
                     self.additional_margin_pts + original_rect.height,
                 ),
                 self.original_pdf,
+                page.number,
             )
 
         return self
